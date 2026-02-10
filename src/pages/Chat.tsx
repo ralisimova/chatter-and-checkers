@@ -12,6 +12,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { chatService } from "../chat/service";
 import { Message, Role } from "../types/message";
+import { gradients } from "../theme/theme";
 
 const AppWrapper = styled(Container)(() => ({
   minHeight: "100vh",
@@ -25,11 +26,11 @@ const Header = styled(Box)(() => ({
   marginBottom: "25px",
   padding: "22px",
   borderRadius: "16px",
-  background: "linear-gradient(135deg, #6a11cb, #2575fc)",
+  background: gradients.primary,
   color: "white",
 }));
 
-const ChatContainer = styled(Paper)(() => ({
+const ChatContainer = styled(Paper)({
   height: "300px",
   padding: "18px",
   overflowY: "auto",
@@ -37,20 +38,20 @@ const ChatContainer = styled(Paper)(() => ({
   flexDirection: "column",
   gap: "12px",
   borderRadius: "16px",
-}));
+});
 
-const UserMessage = styled(Box)(() => ({
+const UserMessage = styled(Box)(({ theme }) => ({
   alignSelf: "flex-end",
-  backgroundColor: "#2575fc",
+  backgroundColor: theme.palette.primary.main,
   color: "white",
   padding: "12px",
   borderRadius: "14px",
   maxWidth: "75%",
 }));
 
-const BotMessage = styled(Box)(() => ({
+const BotMessage = styled(Box)(({ theme }) => ({
   alignSelf: "flex-start",
-  backgroundColor: "#f3f3f3",
+  backgroundColor: theme.palette.action.disabled,
   padding: "12px",
   borderRadius: "14px",
   maxWidth: "75%",
@@ -133,7 +134,7 @@ export function Chat() {
           variant="contained"
           onClick={sendMessage}
           sx={{
-            background: "linear-gradient(135deg, #6a11cb, #2575fc)",
+            background: gradients.primary,
           }}
         >
           Send

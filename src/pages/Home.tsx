@@ -2,6 +2,7 @@ import { Container, Typography, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import { Tile } from "../components/Tile";
 import { useNavigate } from "react-router-dom";
+import { gradients } from "../theme/theme";
 
 const AppWrapper = styled(Container)(() => ({
   minHeight: "100vh",
@@ -15,7 +16,7 @@ const Header = styled(Box)(() => ({
   marginBottom: "25px",
   padding: "22px",
   borderRadius: "16px",
-  background: "linear-gradient(135deg, #6a11cb, #2575fc)",
+  background: gradients.primary,
   color: "white",
 }));
 
