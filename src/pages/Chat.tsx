@@ -1,34 +1,13 @@
 import { useState } from "react";
-import {
-  Container,
-  TextField,
-  Button,
-  Typography,
-  Paper,
-  Box,
-} from "@mui/material";
+import { TextField, Button, Typography, Paper, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { chatService } from "../chat/service";
 import { Message, Role } from "../types/message";
 import { gradients } from "../theme/theme";
-
-const AppWrapper = styled(Container)(() => ({
-  minHeight: "100vh",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-}));
-
-const Header = styled(Box)(() => ({
-  textAlign: "center",
-  marginBottom: "25px",
-  padding: "22px",
-  borderRadius: "16px",
-  background: gradients.primary,
-  color: "white",
-}));
+import { AppWrapper } from "../components/Container";
+import { Header } from "../components/Header";
 
 const ChatContainer = styled(Paper)({
   height: "300px",
@@ -40,28 +19,28 @@ const ChatContainer = styled(Paper)({
   borderRadius: "16px",
 });
 
-const UserMessage = styled(Box)(({ theme }) => ({
+const MessageBubble = styled(Box)({
+  padding: "12px",
+  borderRadius: "14px",
+  maxWidth: "75%",
+});
+
+const UserMessage = styled(MessageBubble)(({ theme }) => ({
   alignSelf: "flex-end",
   backgroundColor: theme.palette.primary.main,
   color: "white",
-  padding: "12px",
-  borderRadius: "14px",
-  maxWidth: "75%",
 }));
 
-const BotMessage = styled(Box)(({ theme }) => ({
+const BotMessage = styled(MessageBubble)(({ theme }) => ({
   alignSelf: "flex-start",
   backgroundColor: theme.palette.action.disabled,
-  padding: "12px",
-  borderRadius: "14px",
-  maxWidth: "75%",
 }));
 
-const InputArea = styled(Box)(() => ({
+const InputArea = styled(Box)({
   display: "flex",
   gap: "10px",
   marginTop: "15px",
-}));
+});
 
 export function Chat() {
   const { mode } = useParams<{ mode: string }>();
@@ -114,9 +93,13 @@ export function Chat() {
       <ChatContainer elevation={4}>
         {chatMessages.map((msg, index) =>
           msg.role === Role.User ? (
-            <UserMessage key={index}>{msg.content}</UserMessage>
+            <UserMessage key={index}>
+              <Typography>{msg.content}</Typography>
+            </UserMessage>
           ) : (
-            <BotMessage key={index}>{msg.content}</BotMessage>
+            <BotMessage key={index}>
+              <Typography>{msg.content}</Typography>
+            </BotMessage>
           )
         )}
       </ChatContainer>

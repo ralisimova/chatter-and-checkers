@@ -1,7 +1,7 @@
 import { Paper, styled, Typography } from "@mui/material";
 import { gradients } from "../theme/theme";
 
-const Container = styled(Paper)(() => ({
+const Container = styled(Paper)({
   padding: "40px 20px",
   textAlign: "center",
   cursor: "pointer",
@@ -13,7 +13,7 @@ const Container = styled(Paper)(() => ({
   "&:hover": {
     transform: "scale(1.05)",
   },
-}));
+});
 
 interface Props {
   onClick: () => void;

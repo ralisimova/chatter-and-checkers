@@ -1,30 +1,15 @@
-import { Container, Typography, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import { Tile } from "../components/Tile";
 import { useNavigate } from "react-router-dom";
-import { gradients } from "../theme/theme";
+import { AppWrapper } from "../components/Container";
+import { Header } from "../components/Header";
 
-const AppWrapper = styled(Container)(() => ({
-  minHeight: "100vh",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-}));
-
-const Header = styled(Box)(() => ({
-  textAlign: "center",
-  marginBottom: "25px",
-  padding: "22px",
-  borderRadius: "16px",
-  background: gradients.primary,
-  color: "white",
-}));
-
-const TileGrid = styled(Box)(() => ({
+const TileGrid = styled(Box)({
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   gap: "20px",
-}));
+});
 
 export function Home() {
   const navigate = useNavigate();
