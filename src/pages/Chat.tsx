@@ -84,7 +84,7 @@ export function Chat() {
         <Button
           variant="contained"
           onClick={onBack}
-          sx={{ mt: 2, background: "white", color: "#2575fc" }}
+          sx={{ mt: 2, background: "white", color: "primary.main" }}
         >
           Back
         </Button>
